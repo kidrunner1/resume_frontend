@@ -4,7 +4,7 @@ import { Prompt, Noto_Sans } from "next/font/google";
 import NavbarClient from "./components/layout/NavbarClient";
 
 export const metadata = {
-  title: "AIBATTLELAB",
+  title: "KRITDAOWASET",
   description: "คำอธิบายเว็บไซต์",
 };
 
