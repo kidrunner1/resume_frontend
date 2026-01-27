@@ -3,34 +3,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const MenuIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.5}
-    className="w-6 h-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-    />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-6 h-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.5}
-    className="w-6 h-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M6 18L18 6M6 6l12 12"
-    />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-6 h-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
@@ -49,12 +29,12 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50
-      w-[92%] max-w-4xl
+      w-[94%] max-w-4xl
       rounded-full
-      bg-slate-900/70 dark:bg-black/70 backdrop-blur-xl
+      bg-slate-900/80 backdrop-blur-xl
       border border-white/10
-      shadow-lg
-      px-6 py-2
+      shadow-xl
+      px-5 py-2
       transition-all duration-500
       ${mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
     >
@@ -62,8 +42,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg sm:text-xl font-semibold text-white tracking-tight
-          hover:text-pink-400 transition"
+          className="text-base sm:text-lg font-semibold text-white tracking-tight"
         >
           KRIT DAOWASET
         </Link>
@@ -74,8 +53,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-300
-              hover:text-white transition relative"
+              className="text-sm font-medium text-slate-300 hover:text-white transition"
             >
               {link.label}
             </Link>
@@ -85,7 +63,7 @@ export default function Navbar() {
         {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-slate-200 hover:text-white transition"
+          className="md:hidden text-slate-200 hover:text-white transition p-2"
           aria-label="Toggle menu"
         >
           {open ? <CloseIcon /> : <MenuIcon />}
@@ -94,20 +72,22 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300
-        ${open ? "max-h-40 opacity-100 mt-3" : "max-h-0 opacity-0"}`}
+        className={`md:hidden absolute left-0 right-0 mt-3 px-4 transition-all duration-300
+        ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
       >
-        <div className="flex flex-col gap-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="text-slate-300 hover:text-white text-sm py-1 transition"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="bg-slate-900/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-4">
+          <div className="flex flex-col divide-y divide-white/10">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="py-3 text-center text-sm font-medium text-slate-200 hover:text-white transition"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </header>
