@@ -58,7 +58,7 @@ const projects = [
             "/images/Project/EN2.png",
             "/images/Project/EN3.png",
             "/images/Project/EN4.png",
-            "/images/Project/EN5.png",
+            "/images/Project/EN7.png",
             "/images/Project/EN6.png",
 
         ],
